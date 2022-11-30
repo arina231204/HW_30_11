@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<h1>Транзакции</h1>
+<p>
+    <a class="btn btn-primary" href="{{ url_for('transaction_create') }}">Создать новую транзакцию</a>
+    <a class="btn btn-success" href="{{ url_for('register') }}">Регистрация</a>
+    <a class="btn btn-success" href="{{ url_for('login') }}">Вход</a>
+    <a class="btn btn-success" href="{{ url_for('logout') }}">Выход</a>
+</p>
+
+<table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Период</th>
+          <th scope="col">Сумма</th>
+          <th scope="col">Статус</th>
+          <th scope="col">Валюта</th>
+          <th scope="col">Комментария</th>
+          <th scope="col"> ...</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for transaction in transactions %}
+        <tr>
+          <th scope="row">{{ transaction.id }}</th>
+          <td>{{ transaction.period }}</td>
+          <td>{{ transaction.value }}</td>
+          <td>{{ transaction.status }}</td>
+          <td>{{ transaction.unit }}</td>
+          <td>{{ transaction.subject }}</td>
+          <td>
+              <a class="btn btn-outline" href="{{ url_for('transaction_detail', id=transaction.id) }}">Об транзакции</a>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock content %}
+

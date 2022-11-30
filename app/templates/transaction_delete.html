@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<h1>Delete transaction</h1>
+
+<form method="POST">
+   <p> Вы действительно хотите удалить transaction?</p>
+   <p> ID = {{transaction.id}}</p>
+   <p> Fio = {{transaction.period}}</p>
+  <button type="submit" class="btn btn-danger">delete</button>
+</form>
+</div>
+{% endblock content %}
